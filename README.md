@@ -1,6 +1,8 @@
 # Importadora-Larrain
 Importante:
-Ver página de index.html e imagen subida al repositorio como referencias visuales. Usé la button class btn-danger de bootstrap por el color rojo y colores neutros para fondos y letras (grises oscuros, grises claros y blancos, ver index.html para referencia.)
+***Ver página de index.html e imagen subida al repositorio como referencias visuales. Usé la button class btn-danger de bootstrap por el color rojo y colores neutros para fondos y letras (grises oscuros, grises claros y blancos, ver index.html para referencia.)
+***Agregar todas las imagenes que usen a la carpeta assests/img para mantener todos los path uniformes
+***El path del logo principal de la tienda es assests/img/logo_gato.png
 Vistas por hacer:
 1. REGISTRO DE PERFIL EN EL SISTEMA: 
 Esta es la vista en la que el cliente debe poder crear su cuenta. Esto se puede hacer con componentes de la vista de inicio.html (inicio de sesión) y formulario_producto.html (esta es la vista que se creó para subir productos, la parte para subir fotos aún no está funcional pero los input sí). 
