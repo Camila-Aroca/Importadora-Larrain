@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ingreso de producto</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="login.css">
+  <link rel="icon" type="image/png" href="assets/img/logo_gato.png">
+  <style>
+      @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');body{background-color: #eeeeee;font-family: 'Open Sans',serif}.container{margin-top:50px;margin-bottom: 50px}.card{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;flex-direction: column;min-width: 0;word-wrap: break-word;background-color: #fff;background-clip: border-box;border: 1px solid rgba(0, 0, 0, 0.1);border-radius: 0.10rem}.card-header:first-child{border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0}.card-header{padding: 0.75rem 1.25rem;margin-bottom: 0;background-color: #fff;border-bottom: 1px solid rgba(0, 0, 0, 0.1)}.track{position: relative;background-color: #ddd;height: 7px;display: -webkit-box;display: -ms-flexbox;display: flex;margin-bottom: 60px;margin-top: 50px}.track .step{-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;width: 25%;margin-top: -18px;text-align: center;position: relative}.track .step.active:before{background: #dc3545}.track .step::before{height: 7px;position: absolute;content: "";width: 100%;left: 0;top: 18px}.track .step.active .icon{background: #dc3545;color: #fff}.track .icon{display: inline-block;width: 40px;height: 40px;line-height: 40px;position: relative;border-radius: 100%;background: #ddd}.track .step.active .text{font-weight: 400;color: #000}.track .text{display: block;margin-top: 7px}.itemside{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;width: 100%}.itemside .aside{position: relative;-ms-flex-negative: 0;flex-shrink: 0}.img-sm{width: 80px;height: 80px;padding: 7px}ul.row, ul.row-sm{list-style: none;padding: 0}.itemside .info{padding-left: 15px;padding-right: 7px}.itemside .title{display: block;margin-bottom: 5px;color: #212529}p{margin-top: 0;margin-bottom: 1rem}.btn-warning{color: #ffffff;background-color: #dc3545;border-color: #ee5435;border-radius: 1px}.btn-warning:hover{color: #ffffff;background-color: #dc3545;border-color: #dc3545;border-radius: 1px}
+
+  </style>
+</head>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var subirBtn = document.getElementById('subirBtn');
+    subirBtn.addEventListener('click', function() {
+      var typeDesc = document.getElementById('typeDesc').value.trim();
+      var typePrecio = document.getElementById('typePrecio').value.trim();
+      var precioRegex = /^[1-9]\d{3,}$/;
+      var descRegex = /^[^0-9]{25,500}$/;
+      var typeCateg = document.getElementById('typeCateg').value.trim();
+      var typeMarca = document.getElementById('typeMarca').value.trim();
+      var typeColor = document.getElementById('typeColor').value.trim();
+      var typeMaterial = document.getElementById('typeMaterial').value.trim();
+      var typeTalla = document.getElementById('typeTalla').value.trim();
+
+  
+      if (typeDesc === '' || typePrecio === '' || typeCateg === '...' || typeMarca === '...'
+      || typeColor === '...'|| typeMaterial === '...' || typeTalla === '...' ) 
+      {
+        alert('Por favor, complete todos los campos.');
+        return;
+      }
+  
+      if (!radioEst1.checked && !radioEst2.checked && !radioEst3.checked && !radioEst4.checked) {
+        alert('Por favor, seleccione el estado de su producto');
+        return;
+      }
+
+      if (!descRegex.test(typeDesc)) {
+        alert('La descripción no puede contener números, y debe tener un mínimo de 25 y un máximo de 500 caracteres.');
+        return;
+      }
+  
+      if (!precioRegex.test(typePrecio)) {
+        alert('El precio debe contener sólo números y ser de un mínimo de $1000 CLP.');
+        return;
+      }
+
+      if (!checkbox.checked) {
+        alert('Debe aceptar los términos y condiciones para subir su producto.');
+        return;
+      }
+  
+      // If all fields are filled, selected, and checkbox and radio button are checked, proceed with payment
+      alert('Producto subido correctamente.');
+    });
+  });
+  </script>
+<body>
+<!--Nav bar es un placeholder, después ponemos la misma en todas las páginas-->
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="index.html">
+    <img src="assets/img/logo_gato.png" width="30" height="30" class="d-inline-block align-top mx-3" alt="Logo tienda">
+    Importadora Larrain
+  </a>
+</nav>
+
+<div >
+  <div class="container">
+    <article class="card">
+        <header class="card-header"> Rastreo de Pedido / Tracking </header>
+        <div class="card-body">
+            <h6>Order ID: OD45345345435</h6>
+            <article class="card">
+                <div class="card-body row">
+                    <div class="col"> <strong>Fecha de entrega estimada:</strong> <br>1 de Julio 2024 </div>
+                    <div class="col"> <strong>Compañia de Envio:</strong> <br> Starken | <i class="fa fa-phone"></i> Tel: +5698675986 </div>
+                    <div class="col"> <strong>Estado:</strong> <br> Recibido por la compañia </div>
+                    <div class="col"> <strong>Nro. Tracking:</strong> <br> BD045903594059 </div>
+                </div>
+            </article>
+            <div class="track">
+                <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Pedido confirmado</span> </div>
+                <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Recibido por compañia</span> </div>
+                <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> En ruta </span> </div>
+                <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">En destino</span> </div>
+            </div>
+            <hr>
+            <ul class="row">
+                <li class="col-md-4">
+                    <figure class="itemside mb-3">
+                        <div class="aside"><img src="assets/img/feature_prod_01.jpg" class="img-sm border"></div>
+                        <figcaption class="info align-self-center">
+                            <p class="title">Linterna LED</p> <span class="text-muted">$9.990 </span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="col-md-4">
+                    <figure class="itemside mb-3">
+                        <div class="aside"><img src="assets/img/feature_prod_02.jpg" class="img-sm border"></div>
+                        <figcaption class="info align-self-center">
+                            <p class="title">Smartwatch Ultima Generacion</p> <span class="text-muted">$99.990 </span>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="col-md-4">
+                    <figure class="itemside mb-3">
+                        <div class="aside"><img src="assets/img/feature_prod_03.jpg" class="img-sm border"></div>
+                        <figcaption class="info align-self-center">
+                            <p class="title">Camara Polaroid</p> <span class="text-muted">$59.990 </span>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+            <hr>
+            <a href="historial-compras-cliente.html" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Volver a historial de pedidos</a>
+            </div>
+    </article>
+</div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<footer class="bg-body-tertiary text-center text-lg-start">
+  <p style="text-align: center;"><a href="#">Back to top</a></p>
+  <p style="text-align: center;">&copy; 2024 Importadora Larrain</p>
+  <p style="text-align: center;">Contactanos: Teléfono: 123-456-7890 | Correo: info@example.com</p>
+  <p style="text-align: center;">Siguenos en nuestras redes:
+  <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+              <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+              <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+          </p>
+<!-- Este footer es un placeholder, la idea es después poner el mismo en todas las páginas -->
+<div id="google_translate_element" style="text-align: center;"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+
+
+</footer>
+
+
+</body>
+</html>
