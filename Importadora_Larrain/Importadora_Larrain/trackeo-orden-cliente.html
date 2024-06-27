@@ -13,53 +13,7 @@
 
   </style>
 </head>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var subirBtn = document.getElementById('subirBtn');
-    subirBtn.addEventListener('click', function() {
-      var typeDesc = document.getElementById('typeDesc').value.trim();
-      var typePrecio = document.getElementById('typePrecio').value.trim();
-      var precioRegex = /^[1-9]\d{3,}$/;
-      var descRegex = /^[^0-9]{25,500}$/;
-      var typeCateg = document.getElementById('typeCateg').value.trim();
-      var typeMarca = document.getElementById('typeMarca').value.trim();
-      var typeColor = document.getElementById('typeColor').value.trim();
-      var typeMaterial = document.getElementById('typeMaterial').value.trim();
-      var typeTalla = document.getElementById('typeTalla').value.trim();
 
-  
-      if (typeDesc === '' || typePrecio === '' || typeCateg === '...' || typeMarca === '...'
-      || typeColor === '...'|| typeMaterial === '...' || typeTalla === '...' ) 
-      {
-        alert('Por favor, complete todos los campos.');
-        return;
-      }
-  
-      if (!radioEst1.checked && !radioEst2.checked && !radioEst3.checked && !radioEst4.checked) {
-        alert('Por favor, seleccione el estado de su producto');
-        return;
-      }
-
-      if (!descRegex.test(typeDesc)) {
-        alert('La descripción no puede contener números, y debe tener un mínimo de 25 y un máximo de 500 caracteres.');
-        return;
-      }
-  
-      if (!precioRegex.test(typePrecio)) {
-        alert('El precio debe contener sólo números y ser de un mínimo de $1000 CLP.');
-        return;
-      }
-
-      if (!checkbox.checked) {
-        alert('Debe aceptar los términos y condiciones para subir su producto.');
-        return;
-      }
-  
-      // If all fields are filled, selected, and checkbox and radio button are checked, proceed with payment
-      alert('Producto subido correctamente.');
-    });
-  });
-  </script>
 <body>
 <!--Nav bar es un placeholder, después ponemos la misma en todas las páginas-->
 <nav class="navbar navbar-light bg-light">

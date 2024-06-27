@@ -1,0 +1,158 @@
+--actualizar la lista de ofertas--   
+html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Lista de Ofertas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #50b3a2;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #ffffff 3px solid;
+        }
+        header h1 {
+            margin: 0;
+            text-align: center;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        form {
+            background: #ffffff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form div {
+            margin-bottom: 10px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        form input[type="text"], form input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        form button {
+            background: #50b3a2;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #50b3a2;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Actualizar Lista de Ofertas</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <form id="offerForm">
+            <div>
+                <label for="productName">Nombre del Producto</label>
+                <input type="text" id="productName" required>
+            </div>
+            <div>
+                <label for="productPrice">Precio</label>
+                <input type="number" id="productPrice" required>
+            </div>
+            <div>
+                <label for="productDiscount">Descuento (%)</label>
+                <input type="number" id="productDiscount" required>
+            </div>
+            <button type="submit">Agregar Oferta</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del Producto</th>
+                    <th>Precio</th>
+                    <th>Descuento (%)</th>
+                    <th>Precio con Descuento</th>
+                </tr>
+            </thead>
+            <tbody id="offerList">
+                <!-- Las ofertas se agregarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('offerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const productName = document.getElementById('productName').value;
+            const productPrice = parseFloat(document.getElementById('productPrice').value);
+            const productDiscount = parseFloat(document.getElementById('productDiscount').value);
+
+            const discountedPrice = productPrice - (productPrice * (productDiscount / 100));
+
+            const table = document.getElementById('offerList');
+            const row = table.insertRow();
+
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
+            const cell4 = row.insertCell(3);
+
+            cell1.textContent = productName;
+            cell2.textContent = productPrice.toFixed(2);
+            cell3.textContent = productDiscount.toFixed(2);
+            cell4.textContent = discountedPrice.toFixed(2);
+
+            document.getElementById('offerForm').reset();
+        });
+    </script>
+</body>
+</html>
+```
