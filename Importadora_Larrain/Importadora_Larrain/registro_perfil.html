@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Crea tu perfil</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="login.css">
+  <link rel="icon" type="image/png" href="assets/img/logo_gato.png">
+  <style>
+    .gradient-form {
+      background-image: url('fotos/Texto del párrafo.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .centered-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 56px); /* 56px is the height of the navbar */
+      padding: 20px;
+      margin-bottom: 100px; /* Added margin to prevent overlap */
+    }
+    .form-container {
+      max-width: 500px;
+      width: 100%;
+    }
+    footer {
+      position: fixed;
+      bottom: -100px; /* Initially hide the footer below the viewport */
+      width: 100%;
+      background-color: #f8f9fa;
+      padding: 10px 0;
+      transition: bottom 0.3s ease-in-out; /* Smooth transition for visibility */
+      z-index: 999; /* Ensure footer is on top */
+    }
+  </style>
+ <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var payButton = document.getElementById('btnRegister');
+    payButton.addEventListener('click', function() {
+      var inputEmail = document.getElementById('inputEmail').value.trim();
+      var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      var inputClave = document.getElementById('inputClave').value.trim();
+      var claveRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:,<.>]).{12,}$/;
+      var inputNombre = document.getElementById('inputNombre').value.trim();
+      var nombreRegex = /^[A-Za-z]+$/;
+      var inputPaterno = document.getElementById('inputPaterno').value.trim();
+      var paternoRegex = /^[A-Za-z]+$/;
+      var inputMaterno = document.getElementById('inputMaterno').value.trim();
+      var maternoRegex = /^[A-Za-z]+$/;
+      var inputFono = document.getElementById('inputFono').value.trim();
+      var fonoRegex = /^[0-9]{8}$/;
+
+
+      if (inputEmail === '' || inputClave === '' || inputNombre === '' || 
+      inputPaterno === '' || inputMaterno === '' || inputFono === '') {
+        alert('Por favor, complete todos los campos.');
+        return;
+      }
+
+      if (!emailRegex.test(inputEmail)) {
+        alert('Por favor, ingrese un correo en el formato correcto.');
+        return;
+      }
+
+      if (!claveRegex.test(inputClave)) {
+        alert('Por favor, ingrese una contraseña en el formato correcto.');
+        return;
+      }
+
+      if (!nombreRegex.test(inputNombre)) {
+        alert('Por favor, ingrese un nombre válido. Solo se permiten letras.');
+        return;
+      }
+
+      if (!paternoRegex.test(inputPaterno)) {
+        alert('Por favor, ingrese un apellido paterno válido. Solo se permiten letras.');
+        return;
+      }
+
+      if (!maternoRegex.test(inputMaterno)) {
+        alert('Por favor, ingrese un apellido materno válido. Solo se permiten letras.');
+        return;
+      }
+
+      if (!fonoRegex.test(inputFono.slice(4))) {
+        alert('Por favor, ingrese un teléfono válido (8 dígitos). Solo se permiten números.');
+        return;
+      }
+
+
+      // Redirect to inicio.html only if all fields are valid
+      window.location.href = 'index.html';
+    });
+
+    // Funcion para mostrar contraseña
+    var mostrarContraseñaCheckbox = document.getElementById('mostrarContraseñaCheckbox');
+    mostrarContraseñaCheckbox.addEventListener('change', function() {
+      var inputClave = document.getElementById('inputClave');
+      if (mostrarContraseñaCheckbox.checked) {
+        inputClave.type = 'text';
+      } else {
+        inputClave.type = 'password';
+      }
+    });
+
+    // Show footer when scrolled to the end of the page
+    window.addEventListener('scroll', function() {
+      var scrollPosition = window.innerHeight + window.pageYOffset;
+      var bodyHeight = document.body.offsetHeight;
+      if (scrollPosition >= bodyHeight) {
+        document.querySelector('footer').style.bottom = '0';
+      } else {
+        document.querySelector('footer').style.bottom = '-100px';
+      }
+    });
+  });
+</script>
+
+</head>
+<body>
+  <!--Nav bar es un placeholder, después ponemos la misma en todas las páginas-->
+  <nav class="navbar navbar-dark bg-light">
+    <a class="navbar-brand" href="index.html">
+      <img src="assets/img/logo_gato.png" width="30" height="30" class="d-inline-block align-top mx-3" alt="Logo tienda">
+      <span style="color: rgb(56, 56, 56);">Importadora Larrain</span>
+    </a>
+  </nav>
+  <section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container centered-form">
+      <div class="form-container">
+        <div class="card rounded-3 text-black">
+          <div class="card-body p-md-5 mx-md-4">
+            <div class="text-center">
+              <img src="assets/img/abanico.png" class="img-fluid rounded-3" alt="Logo" width="80" height="80">
+              <h4 class="mt-1 mb-5 pb-1">Crea tu perfil</h4>
+            </div>
+
+            <form>
+
+              <div class="form-group mb-4">
+                <label for="inputNombre">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" />
+              </div>
+              
+              <div class="form-group mb-4">
+                <label for="inputPaterno">Apellido paterno</label>
+                <input type="text" class="form-control" id="inputPaterno" />
+              </div>
+              
+              <div class="form-group mb-4">
+                <label for="inputMaterno">Apellido materno</label>
+                <input type="text" class="form-control" id="inputMaterno" />
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="inputFono">Teléfono</label>
+                <input type="text" class="form-control" id="inputFono" value="+569" />
+              </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="inputEmail">Correo</label>
+              <input type="email" id="inputEmail" class="form-control" placeholder="Ej. correo@servicio.cl" />
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="inputClave">Contraseña</label>
+              <input type="password" id="inputClave" class="form-control" />
+              <p style="font-size: x-small;">La contraseña debe contener 12 caracteres, mayúsculas, minúsculas, números y caracteres especiales</p>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="mostrarContraseñaCheckbox">
+              <label class="form-check-label" for="mostrarContraseñaCheckbox">Mostrar contraseña</label>
+            </div>
+
+              <div class="text-center pt-1 mb-5 pb-1">
+                <button class="btn btn-danger" id="btnRegister" type="button">Crear perfil</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
